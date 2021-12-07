@@ -6,8 +6,9 @@
     "correct:build-bundle-linkage": "node ./config/correct-prod-asset-linkage.js",
     "clear-dist": "rimraf dist",
     "prod-build": "yarn run clear-dist && yarn run build-bundle && yarn run correct:build-bundle-linkage",
-    "run-server": "ts-node config/server",
-    "serve-generated-webpages": "live-server generated-webpages --port=3434"
+    "dev-backend-server-start": "ts-node config/server",
+    "serve-generated-webpages": "live-server generated-webpages --port=3434",
+    "dev-template-mode-start": "concurrently --kill-others \"npm run dev-start\" \"npm run dev-backend-server-start\" \"npm run serve-generated-webpages\""
   },
   "packageManager": "yarn@3.1.1",
   "version": "0.0.2",
@@ -30,6 +31,7 @@
     "babel-loader": "^8.2.3",
     "beautify": "^0.0.8",
     "cheerio": "^1.0.0-rc.10",
+    "concurrently": "^6.4.0",
     "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^3.1.4",
